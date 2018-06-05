@@ -53,8 +53,9 @@ public class OrderService {
                     orderRepository.save(order);
                 });
 
-        return CompletableFuture.completedFuture(orderRepository.findByOrderId(orderId).get());
-                                                            //.orElseThrows(() -> new )
+        return CompletableFuture.completedFuture(orderRepository.findByOrderId(orderId)
+                                                            .orElseThrow(() ->new NullPointerException()));
+
     }
 }
 
